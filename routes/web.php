@@ -9,7 +9,7 @@ use App\Http\Controllers\UserController;
 
 // Главная страница
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
@@ -21,7 +21,6 @@ Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show')
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 //Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/register', 'App\Http\Controllers\RegisterController@register')->name('register');
-
 
 // Страница входа
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

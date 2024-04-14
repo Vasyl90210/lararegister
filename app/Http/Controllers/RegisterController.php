@@ -28,7 +28,7 @@ class RegisterController extends Controller
         'position' => 'required|string|max:255',
         'birthdate' => 'required|date',
         'email' => 'required|string|email|max:255|unique:users',
-        'password' => 'required|string|min:8|confirmed',
+        'password' => 'required|string|min:3|confirmed',
     ]);
 
     // Создание нового пользователя
@@ -46,7 +46,7 @@ class RegisterController extends Controller
 
     // Другие действия после успешной регистрации
     // Например, редирект или отправка уведомления
-    return Redirect::route('login');
-    //return redirect()->route('login')->with('success', 'Registration successful. Please login.');
+    //return Redirect::route('login');
+    return redirect()->route('login')->with('success', 'Registration successful. Please login.');
 }
 }
