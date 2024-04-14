@@ -19,7 +19,9 @@ Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show')
 
 // Страница регистрации
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
+//Route::post('/register', [RegisterController::class, 'register']);
+Route::post('/register', 'App\Http\Controllers\RegisterController@register')->name('register');
+
 
 // Страница входа
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

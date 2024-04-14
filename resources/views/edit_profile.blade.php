@@ -1,12 +1,9 @@
-<!-- resources/views/edit_profile.blade.php -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Форма редактирования профиля</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('title', 'Регистрация')
+
+@section('content')
+<div class="container">
     <h1>Форма редактирования профиля</h1>
     <form method="POST" action="{{ route('profile.update') }}">
         @csrf
@@ -21,5 +18,5 @@
         <!-- Добавьте остальные поля здесь -->
         <button type="submit">Сохранить</button>
     </form>
-</body>
-</html>
+</div>
+@endsection

@@ -9,6 +9,7 @@ class LoginController extends Controller
 {
     public function showLoginForm()
     {
+        Auth::logout();
         return view('login');
     }
 

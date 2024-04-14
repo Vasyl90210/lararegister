@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
-    <!-- Подключение Bootstrap -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <h1>Registration Form</h1>
+@extends('layouts.app')
+
+@section('title', 'Регистрация')
+
+@section('content')
+<div class="container">
+    <h1>Форма регистрации</h1>
         <form method="POST" action="{{ route('register') }}">
             @csrf
             <div class="form-group">
@@ -59,5 +54,5 @@
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>
-</body>
-</html>
+</div>
+@endsection

@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
     public function showRegistrationForm()
     {
+        Auth::logout();
         return view('register');
     }
 
@@ -43,7 +46,7 @@ class RegisterController extends Controller
 
     // Другие действия после успешной регистрации
     // Например, редирект или отправка уведомления
-
-    return redirect()->route('login')->with('success', 'Registration successful. Please login.');
+    return Redirect::route('login');
+    //return redirect()->route('login')->with('success', 'Registration successful. Please login.');
 }
 }

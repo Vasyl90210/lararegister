@@ -1,12 +1,9 @@
-<!-- resources/views/login.blade.php -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Форма входа</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('title', 'Регистрация')
+
+@section('content')
+<div class="container">
     <h1>Форма входа</h1>
     <form method="POST" action="{{ route('login') }}">
         @csrf
@@ -20,5 +17,5 @@
         </div>
         <button type="submit">Войти</button>
     </form>
-</body>
-</html>
+</div>
+@endsection
