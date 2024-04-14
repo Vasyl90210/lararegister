@@ -25,9 +25,9 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->organization }}</td>
                     <td>
-                        <!-- Кнопка для редактирования пользователя -->
-                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">Edit</a>
-
+                        @auth
+                        <a href="{{ route('users.edit', $user->id) }}">Редактировать профиль</a>
+                        @endauth
                     </td>
                 </tr>
                 @endforeach

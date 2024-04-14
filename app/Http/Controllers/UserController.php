@@ -23,10 +23,22 @@ class UserController extends Controller
         return view('your_view', ['id' => $user->id, 'user' => $user]);
     }
 
-    public function edit(User $user)
-    {
-        return view('users.edit', compact('user'));
+    public function edit($id)
+{
+    // Получаем текущего авторизованного пользователя
+    $currentUser = Auth::user();
+
+    // Получаем пользователя, которого мы пытаемся отредактировать
+    $user = User::findOrFail($id);
+
+    // Проверяем, является ли текущий пользователь владельцем профиля
+    if ($currentUser->id !== $user->id) {
+        abort(403, 'Unauthorized action.');
     }
+
+    return view('users.edit', compact('user'));
+}
+
 
     public function update(Request $request, User $user)
     {
