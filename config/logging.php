@@ -54,7 +54,10 @@ return [
 
         'stack' => [
             'driver' => 'stack',
-            'channels' => explode(',', env('LOG_STACK', 'single')),
+            'channels' => array_merge(
+                explode(',', env('LOG_STACK', 'single')),
+                [env('LOG_STACK', 'query')]
+            ),
             'ignore_exceptions' => false,
         ],
 
@@ -75,7 +78,7 @@ return [
         'query' => [
             'driver' => 'daily',
             'path' => storage_path('logs/query.log'),
-            'level' => 'debug',
+            'level' => env('LOG_LEVEL', 'debug'),
             'days' => 14,
         ],
         'slack' => [

@@ -25,12 +25,3 @@ Route::post('/register', 'App\Http\Controllers\RegisterController@register')->na
 // Страница входа
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
-
-// Страница редактирования профиля
-Route::get('/profile/edit', [ProfileController::class, 'showEditForm'])->name('profile.edit');
-Route::post('/profile/edit', [ProfileController::class, 'edit'])->name('profile.update');
-
-// Страница списка зарегистрированных участников (доступна только аутентифицированным пользователям)
-Route::middleware('auth')->group(function () {
-    Route::get('/participants', [ProfileController::class, 'listParticipants'])->name('participants.list');
-});

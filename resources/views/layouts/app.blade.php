@@ -16,9 +16,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+                <!-- Кнопка "Регистрация" -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('register') }}">Регистрация</a>
                 </li>
+                <!-- Кнопка "Вход" -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">Вход</a>
                 </li>
