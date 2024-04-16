@@ -50,6 +50,9 @@
             <div class="form-group">
                 <label for="password_confirmation">Confirm Password:</label>
                 <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+                @error('password_confirmation')
+                <div class="error">{{ $message }}</div>
+                @enderror
             </div>
             <button type="submit" class="btn btn-primary">Register</button>
         </form>

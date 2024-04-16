@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
 
 class RegisterController extends Controller
 {
@@ -18,33 +17,30 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        //dd($request->all());
-            // Валидация данных
-            $validatedData = $request->validate([
-                'name' => 'required|string|max:255',
-                'surname' => 'required|string|max:255',
-                'gender' => 'required|string|in:male,female,other',
-                'nationality' => 'required|string|max:255',
-                'organization' => 'required|string|max:255',
-                'position' => 'required|string|max:255',
-                'birthdate' => 'required|date',
-                'email' => 'required|string|email|max:255|unique:users',
-                'password' => 'required|string|min:3',
-                'password_confirmation' => 'required|string|min:3|same:password',
-            ]);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'gender' => 'required|string|in:male,female,other',
+            'nationality' => 'required|string|max:255',
+            'organization' => 'required|string|max:255',
+            'position' => 'required|string|max:255',
+            'birthdate' => 'required|date',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:3|confirmed',
+        ]);
 
-            // Создание нового пользователя
-            $user = User::create([
-                'name' => $validatedData['name'],
-                'surname' => $validatedData['surname'],
-                'gender' => $validatedData['gender'],
-                'nationality' => $validatedData['nationality'],
-                'organization' => $validatedData['organization'],
-                'position' => $validatedData['position'],
-                'birthdate' => $validatedData['birthdate'],
-                'email' => $validatedData['email'],
-                'password' => Hash::make($validatedData['password']),
-            ]);
-            return redirect()->route('login')->with('success', 'Registration successful. Please login.');
+        User::create([
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'gender' => $request->gender,
+            'nationality' => $request->nationality,
+            'organization' => $request->organization,
+            'position' => $request->position,
+            'birthdate' => $request->birthdate,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('login')->with('success', 'Registration successful. Please login.');
     }
 }
