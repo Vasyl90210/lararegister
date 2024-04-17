@@ -10,28 +10,47 @@
 <body>
     <!-- Навигационная панель -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Моя конференция</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <!-- Кнопка "Регистрация" -->
+    <a class="navbar-brand" href="#">Моя конференция</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+            <!-- Кнопка "Регистрация" -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('register') }}">Регистрация</a>
+            </li>
+            <!-- Кнопка "Вход" -->
+            <li class="nav-item">
+            @auth
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('register') }}">Регистрация</a>
+                    <a class="nav-link" href="{{ route('login') }}">Выход</a>
                 </li>
-                <!-- Кнопка "Вход" -->
+            <!-- Если пользователь не авторизован, показываем кнопку "Вход" -->
+            @else
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">Вход</a>
                 </li>
-                <!-- Кнопка "Назад" -->
+            @endauth
+            </li>
+            <!-- Кнопка "Назад" -->
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:history.back()">Назад</a>
+            </li>
+        </ul>
+        <!-- Проверяем, авторизован ли пользователь -->
+        @auth
+            <ul class="navbar-nav ml-auto"> <!-- Используем ml-auto для выравнивания вправо -->
+                <!-- Если пользователь авторизован, показываем его имя и фамилию -->
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:history.back()">Назад</a>
+                    <span class="navbar-text">
+                        {{ Auth::user()->name }} {{ Auth::user()->surname }}
+                    </span>
                 </li>
-                <!-- Добавьте здесь другие пункты меню, если необходимо -->
             </ul>
-        </div>
-    </nav>
+        @endauth
+    </div>
+</nav>
     <div class="container mt-4"> <!-- Добавляем отступ сверху для контента -->
         @yield('content')
     </div>

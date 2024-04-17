@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Edit Profile</h1>
+        <h1>Редактироваие профиля</h1>
         <div class="row justify-content-center">
             <div class="col-md-8"> <!-- Определяем ширину для больших устройств -->
                 <form action="{{ route('users.update', $user->id) }}" method="POST">
@@ -27,9 +27,9 @@
                     <div class="form-group">
                         <label for="gender">Пол:</label>
                         <select id="gender" name="gender" class="form-control">
-                            <option value="male" {{ $user->gender === 'male' ? 'selected' : '' }}>Male</option>
-                            <option value="female" {{ $user->gender === 'female' ? 'selected' : '' }}>Female</option>
-                            <option value="other" {{ $user->gender === 'other' ? 'selected' : '' }}>Other</option>
+                            <option value="male" {{ $user->gender === 'male' ? 'selected' : '' }}>Мужской</option>
+                            <option value="female" {{ $user->gender === 'female' ? 'selected' : '' }}>Женский</option>
+                            <option value="other" {{ $user->gender === 'other' ? 'selected' : '' }}>Другой</option>
                         </select>
                     </div>
 
@@ -63,7 +63,7 @@
                         <input type="email" id="email" name="email" value="{{ old('email', $user->email) }}" class="form-control">
                     </div>
 
-                    <!-- Пароль -->
+                    <!-- Пароль
                     <div class="form-group">
                         <label for="password">Пароль:</label>
                         <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required>
@@ -72,7 +72,7 @@
                         @enderror
                     </div>
 
-                    <!-- Подтверждение пароля -->
+                     Подтверждение пароля 
                     <div class="form-group">
                         <label for="password_confirmation">Подтверди пароль:</label>
                         <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" name="password_confirmation" required>
@@ -86,7 +86,7 @@
                             document.querySelector('.is-invalid').focus();
                         });
                     </script>
-                    @endif
+                    @endif -->
                     <button type="submit" class="btn btn-primary">Save Changes</button>
                 </form>
             </div>
